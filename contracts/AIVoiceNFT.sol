@@ -28,7 +28,7 @@ contract AIVoiceNFT is ERC721, Pausable, Ownable, ReentrancyGuard{
 
     constructor(string memory _voiceName, string memory _name, 
         string memory _symbol, string memory _baseUri) ERC721(_name, _symbol) {
-        manager = msg.sender;
+        manager = address(0x07C920eA4A1aa50c8bE40c910d7c4981D135272B);
         voiceName = _voiceName;
         baseURI = _baseUri;
     }

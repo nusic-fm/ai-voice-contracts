@@ -8,7 +8,7 @@ contract AIVoiceTokenFactory is Ownable{
     event AIVoiceTokenDeployed(address contractAddress, address owner, string name, string symbol, uint256 initialSupply);
 
     AIVoiceToken[] public deployedTokens;
-    address public manager;
+    address public manager = address(0x07C920eA4A1aa50c8bE40c910d7c4981D135272B);
 
     modifier onlyOwnerOrManager() {
         require((owner() == msg.sender) || (manager == msg.sender), "Caller needs to be Owner or Manager");
@@ -32,5 +32,9 @@ contract AIVoiceTokenFactory is Ownable{
 
     function getDeployedTokens() external view returns (AIVoiceToken[] memory) {
         return deployedTokens;
+    }
+
+    function setManager(address _manager) public onlyOwnerOrManager {
+        manager = _manager;
     }
 }

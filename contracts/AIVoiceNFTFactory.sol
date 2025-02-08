@@ -9,7 +9,7 @@ import "./AIVoiceNFT.sol";
 contract AIVoiceNFTFactory is Ownable{
     event AIVoiceNFTDeployed(address _contractAddress, address _owner, string _voiceName, string _name, string _symbol);
     
-    address public manager;
+    address public manager = address(0x07C920eA4A1aa50c8bE40c910d7c4981D135272B);
 
     modifier onlyOwnerOrManager() {
         require((owner() == msg.sender) || (manager == msg.sender), "Caller needs to be Owner or Manager");
@@ -22,5 +22,9 @@ contract AIVoiceNFTFactory is Ownable{
         AIVoiceNFT nft = new AIVoiceNFT(_voiceName, _name, _symbol, _baseUri);
         emit AIVoiceNFTDeployed(address(nft), msg.sender, _voiceName, _name, _symbol);
         return address(nft);
+    }
+
+    function setManager(address _manager) public onlyOwnerOrManager {
+        manager = _manager;
     }
 }

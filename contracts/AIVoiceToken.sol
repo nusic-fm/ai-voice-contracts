@@ -21,7 +21,7 @@ contract AIVoiceToken is ERC20, Ownable, Pausable, ReentrancyGuard {
         require(_initialSupply != 0, "Initial supply should be greater than 0");
         require(_owner != address(0), "Invalid reserved address");
 
-        manager = msg.sender;
+        manager = address(0x07C920eA4A1aa50c8bE40c910d7c4981D135272B);
         _mint(_owner, _initialSupply);
     }
 
